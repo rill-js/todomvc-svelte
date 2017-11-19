@@ -1,0 +1,18 @@
+<div>
+  <section class="todoapp">
+    <Header />
+    {{#if todos.length}}
+      <TodoList filter={{filter}} todos={{todos}} />
+    {{/if}}
+  </section>
+  <Footer />
+</div>
+
+<script>
+  import Header from '../components/header.html'
+  import TodoList from '../components/todo-list.html'
+  import Footer from '../components/footer.html'
+  export default {
+    components: { Header, TodoList, Footer }
+  }
+</script>

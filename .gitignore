@@ -1,0 +1,13 @@
+# Editors
+*.sublime*
+.vscode
+
+# OSX
+*.DS_Store
+
+# Code Coverage
+coverage
+
+# NPM
+node_modules
+npm-debug.log

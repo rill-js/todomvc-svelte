@@ -1,0 +1,26 @@
+<li class={{cx({ completed: todo.completed, editing: todo.editing })}}>
+  <div class="view">
+    <a href={{`/app/todo/toggle/${todo.id}`}}>
+      <input class="toggle" type="checkbox" checked={{todo.completed}} />
+      <label />
+    </a>
+    <a href={{`/app/todo/open/${todo.id}`}}><label>{{todo.text}}</label></a>
+    <form action={{`/app/todo/remove/${todo.id}`}}>
+      <button class="destroy" type="submit"></button>
+    </form>
+  </div>
+
+  {{#if todo.editing}}
+    <form class="update-form" action={{`/app/todo/update/${todo.id}`}} method="POST">
+      <input class="edit" name="text" value={{todo.text}} />
+      <button type="submit"></button>
+    </form>
+  {{/if}}
+</li>
+
+<script>
+  import cx from 'classnames'
+  export default {
+    helpers: { cx }
+  }
+</script>

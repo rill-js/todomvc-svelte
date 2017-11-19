@@ -1,0 +1,38 @@
+@import 'todomvc-common/base.css';
+@import 'todomvc-app-css/index.css';
+
+a label {
+  cursor: pointer;
+}
+
+.todo-list a {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+/* Makes underlying toggle input not clickable since we use links */
+.todo-list li .toggle + label {
+  position: absolute;
+  padding: 10px 0;
+  width: 40px;
+  height: 40px;
+}
+
+/* Hides new todo button (submitted with enter key) */
+.create-form button {
+  display: none;
+}
+
+/* When a todo is being updated creates a full screen click away button to save. */
+.update-form button {
+  z-index:1;
+  position:fixed;
+  width: 100vw;
+  height: 100vh;
+  top:0; left:0;
+}
+
+/* Ensures the todo being edited is above the save button */
+.update-form .edit {
+  z-index: 2;
+}

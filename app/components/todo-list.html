@@ -1,0 +1,52 @@
+<div>
+  <section class="main">
+    <a href="/app/todo/toggle-all">
+      <input class="toggle-all" type="checkbox" />
+      <label for="toggle-all">Mark all as complete</label>
+    </a>
+    <ul class="todo-list">
+      {{#each todos as todo}}
+        <TodoItem todo={{todo}}/>
+      {{/each}}
+    </ul>
+  </section>
+  <footer class="footer">
+    <span class="todo-count"><strong>{{pending.length}}</strong> item left</span>
+    <ul class="filters">
+      <li>
+        <a class={{cx({ selected: filter === "all" })}} href="/">All</a>
+      </li>
+      <li>
+        <a class={{cx({ selected: filter === "pending" })}} href="/pending">Active</a>
+      </li>
+      <li>
+        <a class={{cx({ selected: filter === "completed" })}} href="/completed">Completed</a>
+      </li>
+    </ul>
+
+    <form action="/app/todo/remove-completed">
+      <button type="submit" class="clear-completed">Clear completed</button>
+    </form>
+  </footer>
+</div>
+
+<script>
+  import cx from 'classnames'
+  import TodoItem from './todo-item.html'
+  export default {
+    helpers: { cx },
+    components: { TodoItem },
+    computed: {
+      completed: todos => todos.filter(todo => todo.completed),
+      pending: todos => todos.filter(todo => !todo.completed),
+      display: (todos, pending, completed, filter) => {
+        return (
+          filter === 'all' ? todos
+          : filter === 'pending' ? pending
+          : filter === 'completed' ? completed
+          : null
+       )
+      }
+    }
+  }
+</script>
