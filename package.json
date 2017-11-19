@@ -56,14 +56,15 @@
   },
   "keywords": [
     "isomorphic",
-    "svelte",
     "rill",
+    "svelte",
     "todo-mvc",
     "universal",
     "webpack"
   ],
   "license": "MIT",
   "main": "build/index.js",
+  "private": true,
   "scripts": {
     "build": "webpack --progress --config ./config/prod/webpack.config.js",
     "precommit": "npm run build && git add ./build --all",
