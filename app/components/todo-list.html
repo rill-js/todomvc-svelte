@@ -5,7 +5,7 @@
       <label for="toggle-all">Mark all as complete</label>
     </a>
     <ul class="todo-list">
-      {{#each todos as todo}}
+      {{#each todoList as todo}}
         <TodoItem todo={{todo}}/>
       {{/each}}
     </ul>
@@ -39,7 +39,7 @@
     computed: {
       completed: todos => todos.filter(todo => todo.completed),
       pending: todos => todos.filter(todo => !todo.completed),
-      display: (todos, pending, completed, filter) => {
+      todoList: (todos, pending, completed, filter) => {
         return (
           filter === 'all' ? todos
           : filter === 'pending' ? pending
